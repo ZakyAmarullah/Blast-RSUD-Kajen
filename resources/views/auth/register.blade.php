@@ -58,7 +58,7 @@
                                 name="username" 
                                 value="{{ old('username') }}" 
                                 placeholder="Masukkan username"
-                                class="w-full px-4 py-2.5 bg-[#FDFDFC] dark:bg-[#1C1C1A] border border-[#19140020] dark:border-[#3E3E3A] rounded-xl text-sm transition-all focus:outline-none focus:border-[#0071BC] dark:focus:border-[#0071BC] focus:ring-2 focus:ring-[#0071BC]/10 dark:focus:ring-[#0071BC]/10 text-[#1b1b18] dark:text-white placeholder-[#706f6c]/50 dark:placeholder-[#A1A09A]/45 @error('email') border-red-500 focus:border-red-500 focus:ring-red-500/10 @enderror"
+                                class="w-full px-4 py-2.5 bg-[#FDFDFC] dark:bg-[#1C1C1A] border border-[#1C1C1A] dark:border-[#3E3E3A] rounded-xl text-sm transition-all focus:outline-none focus:border-[#1e6b45] dark:focus:border-[#0071BC] focus:ring-2 focus:ring-[#0071BC]/10 dark:focus:ring-[#0071BC]/10 text-[#1b1b18] dark:text-white placeholder-[#706f6c]/50 dark:placeholder-[#A1A09A]/45 @error('email') border-red-500 focus:border-red-500 focus:ring-red-500/10 @enderror"
                                 required
                                 autofocus
                             >
@@ -83,7 +83,7 @@
                                 name="email" 
                                 value="{{ old('email') }}" 
                                 placeholder="nama@email.com"
-                                class="w-full px-4 py-2.5 bg-[#FDFDFC] dark:bg-[#1C1C1A] border border-[#19140020] dark:border-[#3E3E3A] rounded-xl text-sm transition-all focus:outline-none focus:border-[#0071BC] dark:focus:border-[#0071BC] focus:ring-2 focus:ring-[#0071BC]/10 dark:focus:ring-[#0071BC]/10 text-[#1b1b18] dark:text-white placeholder-[#706f6c]/50 dark:placeholder-[#A1A09A]/45 @error('email') border-red-500 focus:border-red-500 focus:ring-red-500/10 @enderror"
+                                class="w-full px-4 py-2.5 bg-[#FDFDFC] dark:bg-[#1C1C1A] border border-[#1C1C1A] dark:border-[#3E3E3A] rounded-xl text-sm transition-all focus:outline-none focus:border-[#1e6b45] dark:focus:border-[#0071BC] focus:ring-2 focus:ring-[#0071BC]/10 dark:focus:ring-[#0071BC]/10 text-[#1b1b18] dark:text-white placeholder-[#706f6c]/50 dark:placeholder-[#A1A09A]/45 @error('email') border-red-500 focus:border-red-500 focus:ring-red-500/10 @enderror"
                                 required
                             >
                             @error('email')
@@ -106,7 +106,7 @@
                                 id="password" 
                                 name="password" 
                                 placeholder="Minimal 8 karakter"
-                                class="w-full px-4 py-2.5 bg-[#FDFDFC] dark:bg-[#1C1C1A] border border-[#19140020] dark:border-[#3E3E3A] rounded-xl text-sm transition-all focus:outline-none focus:border-[#0071BC] dark:focus:border-[#0071BC] focus:ring-2 focus:ring-[#0071BC]/10 dark:focus:ring-[#0071BC]/10 text-[#1b1b18] dark:text-white placeholder-[#706f6c]/50 dark:placeholder-[#A1A09A]/45 @error('email') border-red-500 focus:border-red-500 focus:ring-red-500/10 @enderror"
+                                class="w-full px-4 py-2.5 bg-[#FDFDFC] dark:bg-[#1C1C1A] border border-[#1C1C1A] dark:border-[#3E3E3A] rounded-xl text-sm transition-all focus:outline-none focus:border-[#1e6b45] dark:focus:border-[#0071BC] focus:ring-2 focus:ring-[#0071BC]/10 dark:focus:ring-[#0071BC]/10 text-[#1b1b18] dark:text-white placeholder-[#706f6c]/50 dark:placeholder-[#A1A09A]/45 @error('email') border-red-500 focus:border-red-500 focus:ring-red-500/10 @enderror"
                                 required
                             >
                             @error('password')
@@ -122,7 +122,7 @@
                         <!-- Register Button -->
                         <button 
                             type="submit" 
-                            class="w-full mt-2 px-5 py-3 bg-[#1b1b18] dark:bg-[#eeeeec] text-white dark:text-[#1C1C1A] hover:bg-black dark:hover:bg-white border border-transparent dark:border-transparent font-medium rounded-xl text-sm transition-all shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] cursor-pointer"
+                            class="w-full mt-2 px-5 py-3 bg-[#1e6b45] hover:bg-[#175438] text-white dark:text-white font-medium rounded-xl text-sm transition-all shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] cursor-pointer"
                         >
                             Daftar Sekarang
                         </button>

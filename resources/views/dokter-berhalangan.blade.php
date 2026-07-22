@@ -21,14 +21,8 @@
 <body class="bg-gray-100 text-gray-800 font-sans flex h-screen overflow-hidden">
 
     <!-- ======================== SIDEBAR ======================== -->
-    <!-- Backdrop Overlay -->
-    <div
-        id="sidebar-backdrop"
-        class="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm hidden transition-opacity duration-300"
-        onclick="toggleSidebar()"
-    ></div>
+    <aside class="w-52 bg-[#1e6b45] text-white flex flex-col shrink-0 relative overflow-hidden">
 
-    <aside id="sidebar" class="fixed top-0 left-0 h-full z-40 w-52 bg-[#1e6b45] text-white flex flex-col shrink-0 overflow-hidden -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl">
         <!-- Logo -->
         <div class="px-5 py-5 border-b border-white/15 flex items-center gap-2.5">
             <img src="{{ asset('logo.png') }}" alt="Logo RSUD Kajen" class="h-10 w-auto">
@@ -37,11 +31,10 @@
                 <p class="text-white/70 text-[10px]">Melayani dengan Hati</p>
             </div>
         </div>
-
         <!-- Navigation Menu -->
         <nav class="flex-1 py-4 overflow-y-auto">
             <ul class="space-y-0.5 px-3">
-                <!-- Dashboard -->
+                <!-- Dashboard Active -->
                 <li>
                     <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/80 hover:bg-white/10 text-sm font-medium transition-colors">
                         <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -59,7 +52,7 @@
                         Data Booking
                     </a>
                 </li>
-                <!-- Dokter Berhalangan ACTIVE -->
+                <!-- Dokter Berhalangan -->
                 <li>
                     <a href="{{ route('dokter-berhalangan') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-white/20 text-white text-sm font-semibold">
                         <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -68,10 +61,9 @@
                         Dokter Berhalangan
                     </a>
                 </li>
-                
                 <!-- Monitoring Notifikasi -->
                 <li>
-                    <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/80 hover:bg-white/10 text-sm font-medium transition-colors">
+                    <a href="{{ route('monitoring-notifikasi') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/80 hover:bg-white/10 text-sm font-medium transition-colors">
                         <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
                         </svg>
@@ -108,7 +100,6 @@
                 </li>
             </ul>
         </nav>
-
         <!-- Logout -->
         <div class="px-3 py-4 border-t border-white/15">
             <form action="{{ route('logout') }}" method="POST">
@@ -122,19 +113,12 @@
             </form>
         </div>
     </aside>
-
     <!-- ======================== MAIN CONTENT ======================== -->
     <div class="flex-1 flex flex-col overflow-hidden">
 
         <!-- Top Navbar -->
         <header class="bg-white border-b border-gray-200 px-6 py-3.5 flex items-center gap-3 shrink-0">
-            <!-- Hamburger -->
-            <button id="hamburger-btn" onclick="toggleSidebar()" class="text-gray-500 hover:text-gray-700 transition-colors cursor-pointer mr-1">
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-            </button>
-
+            
             <h1 class="text-base font-bold text-gray-800">Dokter Berhalangan</h1>
 
             <div class="ml-auto flex items-center gap-3">
@@ -870,7 +854,7 @@
         // Broadcast trigger logic
         function submitBroadcast() {
             alert('Notifikasi Broadcast berhasil dijadwalkan dan dikirim!');
-            window.location.href = "{{ route('dashboard') }}";
+            window.location.href = "{{ route('monitoring-notifikasi') }}";
         }
     </script>
 </body>

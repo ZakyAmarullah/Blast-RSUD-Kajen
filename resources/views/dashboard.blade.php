@@ -21,14 +21,8 @@
 <body class="bg-gray-100 text-gray-800 font-sans flex h-screen overflow-hidden">
 
     <!-- ======================== SIDEBAR ======================== -->
-    <!-- Backdrop Overlay -->
-    <div
-        id="sidebar-backdrop"
-        class="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm hidden transition-opacity duration-300"
-        onclick="toggleSidebar()"
-    ></div>
+    <aside class="w-52 bg-[#1e6b45] text-white flex flex-col shrink-0 relative overflow-hidden">
 
-    <aside id="sidebar" class="fixed top-0 left-0 h-full z-40 w-52 bg-[#1e6b45] text-white flex flex-col shrink-0 overflow-hidden -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl">
         <!-- Logo -->
         <div class="px-5 py-5 border-b border-white/15 flex items-center gap-2.5">
             <img src="{{ asset('logo.png') }}" alt="Logo RSUD Kajen" class="h-10 w-auto">
@@ -37,7 +31,6 @@
                 <p class="text-white/70 text-[10px]">Melayani dengan Hati</p>
             </div>
         </div>
-
         <!-- Navigation Menu -->
         <nav class="flex-1 py-4 overflow-y-auto">
             <ul class="space-y-0.5 px-3">
@@ -68,18 +61,9 @@
                         Dokter Berhalangan
                     </a>
                 </li>
-                <!-- Kirim Notifikasi -->
-                <!-- <li>
-                    <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/80 hover:bg-white/10 text-sm font-medium transition-colors">
-                        <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
-                        </svg>
-                        Kirim Notifikasi
-                    </a>
-                </li> -->
                 <!-- Monitoring Notifikasi -->
                 <li>
-                    <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/80 hover:bg-white/10 text-sm font-medium transition-colors">
+                    <a href="{{ route('monitoring-notifikasi') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/80 hover:bg-white/10 text-sm font-medium transition-colors">
                         <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
                         </svg>
@@ -116,7 +100,6 @@
                 </li>
             </ul>
         </nav>
-
         <!-- Logout -->
         <div class="px-3 py-4 border-t border-white/15">
             <form action="{{ route('logout') }}" method="POST">
@@ -131,18 +114,13 @@
         </div>
     </aside>
 
+
     <!-- ======================== MAIN CONTENT ======================== -->
     <div class="flex-1 flex flex-col overflow-hidden">
 
         <!-- Top Navbar -->
         <header class="bg-white border-b border-gray-200 px-6 py-3.5 flex items-center gap-3 shrink-0">
-            <!-- Hamburger -->
-            <button id="hamburger-btn" onclick="toggleSidebar()" class="text-gray-500 hover:text-gray-700 transition-colors cursor-pointer mr-1">
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-            </button>
-
+            
             <h1 class="text-base font-bold text-gray-800">Dashboard</h1>
 
             <div class="ml-auto flex items-center gap-3">
@@ -185,10 +163,7 @@
         </header>
 
         <!-- Page Content -->
-        <main class="flex-1 overflow-y-auto bg-gray-50 pb-6">
-            <div class="p-6 max-w-5xl mx-auto w-full">
-
-            
+        <main class="flex-1 overflow-y-auto p-6 bg-gray-50">
             <!-- Welcome Text -->
             <div class="mb-5">
                 <h2 class="text-xl font-bold text-gray-900">Selamat datang, {{ Auth::user()->name }}</h2>
@@ -196,7 +171,6 @@
                     Berikut ringkasan aktivitas <span class="text-[#1e6b45] font-semibold">Poli Penyakit Dalam</span> hari ini.
                 </p>
             </div>
-
             <!-- Stats Cards -->
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                 <!-- Booking Hari Ini -->
@@ -218,7 +192,6 @@
                         12% dari kemarin
                     </div>
                 </div>
-
                 <!-- Dokter Praktik -->
                 <div class="bg-white rounded-xl p-5 border border-gray-100 shadow-sm">
                     <div class="flex items-start gap-3 mb-3">
@@ -237,7 +210,6 @@
                         — dari kemarin
                     </div>
                 </div>
-
                 <!-- Dokter Berhalangan -->
                 <div class="bg-white rounded-xl p-5 border border-gray-100 shadow-sm">
                     <div class="flex items-start gap-3 mb-3">
@@ -257,7 +229,6 @@
                         100% dari kemarin
                     </div>
                 </div>
-
                 <!-- Broadcast Hari Ini -->
                 <div class="bg-white rounded-xl p-5 border border-gray-100 shadow-sm">
                     <div class="flex items-start gap-3 mb-3">
@@ -278,7 +249,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Two Column Section -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
                 <!-- Dokter Berhalangan Hari Ini -->
@@ -309,7 +279,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Status Broadcast Hari Ini -->
                 <div class="bg-white rounded-xl border border-gray-100 shadow-sm">
                     <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100">
@@ -354,7 +323,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Aktivitas Terbaru -->
             <div class="bg-white rounded-xl border border-gray-100 shadow-sm">
                 <div class="px-5 py-4 border-b border-gray-100">
@@ -402,9 +370,8 @@
                     </div>
                 </div>
             </div>
-
-            </div>
         </main>
+
 
         <!-- Footer -->
         <footer class="bg-white border-t border-gray-100 py-3 text-center shrink-0">

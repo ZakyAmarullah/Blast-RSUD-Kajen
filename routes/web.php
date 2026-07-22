@@ -24,6 +24,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/dokter-berhalangan', function () {
         return view('dokter-berhalangan');
     })->name('dokter-berhalangan');
+    Route::get('/monitoring-notifikasi', function () {
+        return view('monitoring-notifikasi');
+    })->name('monitoring-notifikasi');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
