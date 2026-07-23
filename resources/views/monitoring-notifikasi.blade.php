@@ -22,14 +22,8 @@
 
     <!-- ======================== SIDEBAR ======================== -->
     <!-- Backdrop Overlay -->
-    <div
-        id="sidebar-backdrop"
-        class="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm hidden transition-opacity duration-300"
-        onclick="toggleSidebar()"
-    ></div>
+     <aside class="w-52 bg-[#1e6b45] text-white flex flex-col shrink-0 relative overflow-hidden">
 
-    <aside id="sidebar" class="fixed top-0 left-0 h-full z-40 w-52 bg-[#1e6b45] text-white flex flex-col shrink-0 overflow-hidden -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl">
-        <!-- Logo -->
         <div class="px-5 py-5 border-b border-white/15 flex items-center gap-2.5">
             <img src="{{ asset('logo.png') }}" alt="Logo RSUD Kajen" class="h-10 w-auto">
             <div class="leading-tight">
@@ -79,7 +73,7 @@
                 </li>
                 <!-- Riwayat Notifikasi -->
                 <li>
-                    <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/80 hover:bg-white/10 text-sm font-medium transition-colors">
+                    <a href="{{ route('riwayat-notifikasi') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/80 hover:bg-white/10 text-sm font-medium transition-colors">
                         <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
                         </svg>
@@ -88,7 +82,7 @@
                 </li>
                 <!-- Laporan -->
                 <li>
-                    <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/80 hover:bg-white/10 text-sm font-medium transition-colors">
+                    <a href="{{ route('laporan') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/80 hover:bg-white/10 text-sm font-medium transition-colors">
                         <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                         </svg>
@@ -127,13 +121,6 @@
 
         <!-- Top Navbar -->
         <header class="bg-white border-b border-gray-200 px-6 py-3.5 flex items-center gap-3 shrink-0">
-            <!-- Hamburger -->
-            <button id="hamburger-btn" onclick="toggleSidebar()" class="text-gray-500 hover:text-gray-700 transition-colors cursor-pointer mr-1">
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-            </button>
-
             <h1 class="text-base font-bold text-gray-800">Monitoring Notifikasi</h1>
 
             <div class="ml-auto flex items-center gap-3">
@@ -156,29 +143,12 @@
                     </svg>
                     <span id="current-navbar-date">{{ \Carbon\Carbon::now()->locale('id')->isoFormat('dddd, D MMMM YYYY') }}</span>
                 </div>
-
-                <!-- User Menu -->
-                <button class="flex items-center gap-2 hover:bg-gray-50 px-2 py-1 rounded-lg transition-colors">
-                    <div class="w-8 h-8 bg-[#1e6b45] text-white rounded-full flex items-center justify-center font-semibold text-sm">
-                        {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
-                    </div>
-                    <span class="text-sm font-semibold text-gray-800 hidden sm:inline">{{ Auth::user()->name }}</span>
-                    <svg class="w-3.5 h-3.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
-                    </svg>
-                </button>
             </div>
         </header>
 
         <!-- Page Content -->
         <main class="flex-1 overflow-y-auto bg-gray-50 pb-6">
-            <div class="p-6 max-w-5xl mx-auto w-full">
-
-                <!-- Page Title -->
-                <div class="mb-5">
-                    <h2 class="text-xl font-bold text-gray-900">Monitoring Notifikasi</h2>
-                    <p class="text-sm text-gray-500 mt-0.5">Pantau status pengiriman notifikasi WhatsApp kepada pasien.</p>
-                </div>
+            <div class="p-6 w-full">
 
                 <!-- Broadcast Info Banner -->
                 <div class="mb-5 bg-white border border-[#1e6b45]/20 rounded-xl px-5 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-sm">

@@ -27,6 +27,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/monitoring-notifikasi', function () {
         return view('monitoring-notifikasi');
     })->name('monitoring-notifikasi');
+    Route::get('/riwayat-notifikasi', function () {
+        return view('riwayat-notifikasi');
+    })->name('riwayat-notifikasi');
+    Route::get('/laporan', function () {
+        return view('laporan');
+    })->name('laporan');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
