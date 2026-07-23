@@ -72,7 +72,7 @@
                 </li>
                 <!-- Riwayat Notifikasi -->
                 <li>
-                    <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/80 hover:bg-white/10 text-sm font-medium transition-colors">
+                    <a href="{{ route('riwayat-notifikasi') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/80 hover:bg-white/10 text-sm font-medium transition-colors">
                         <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
                         </svg>
@@ -81,7 +81,7 @@
                 </li>
                 <!-- Laporan -->
                 <li>
-                    <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/80 hover:bg-white/10 text-sm font-medium transition-colors">
+                    <a href="{{ route('laporan') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/80 hover:bg-white/10 text-sm font-medium transition-colors">
                         <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                         </svg>
@@ -151,147 +151,141 @@
                     </svg>
                     <span class="absolute top-0 right-0 bg-red-500 text-white text-[9px] font-bold w-4 h-4 flex items-center justify-center rounded-full">2</span>
                 </button>
-
-                <!-- User Menu -->
-                <button class="flex items-center gap-2 hover:bg-gray-50 px-2 py-1 rounded-lg transition-colors">
-                    <div class="w-8 h-8 bg-[#1e6b45] text-white rounded-full flex items-center justify-center font-semibold text-sm">
-                        {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
-                    </div>
-                    <span class="text-sm font-semibold text-gray-800 hidden sm:inline">{{ Auth::user()->name }}</span>
-                </button>
             </div>
         </header>
 
         <!-- Page Content -->
-        <main class="flex-1 overflow-y-auto bg-gray-50">
-            <div class="px-8 py-6 w-full">
+        <main class="flex-1 overflow-y-auto bg-gray-50 p-6">
+
+            <!-- Main Content Card -->
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 space-y-6">
 
                 <!-- Filters & Search Row -->
-                <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-5">
-                    <!-- Date Input -->
-                    <div class="w-52">
-                        <label for="booking-date" class="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wider">Tanggal</label>
-                        <div class="relative">
+                    <div class="flex flex-col md:flex-row items-end gap-4">
+                        
+                        <!-- Tanggal Input -->
+                        <div class="w-full md:w-48">
+                            <label for="booking-date" class="block text-xs font-semibold text-gray-600 mb-1.5">Tanggal</label>
+                            <div class="relative">
+                                <input
+                                    type="date"
+                                    id="booking-date"
+                                    value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}"
+                                    class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-800 bg-white font-medium focus:outline-none focus:ring-2 focus:ring-[#1e6b45]/30 focus:border-[#1e6b45] transition-colors pr-10 cursor-pointer"
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Poli Dropdown -->
+                        <div class="w-full md:w-56">
+                            <label for="booking-poli" class="block text-xs font-semibold text-gray-600 mb-1.5">Poli</label>
+                            <div class="relative">
+                                <select
+                                    id="booking-poli"
+                                    class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-800 bg-white font-medium focus:outline-none focus:ring-2 focus:ring-[#1e6b45]/30 focus:border-[#1e6b45] transition-colors appearance-none pr-10 cursor-pointer"
+                                >
+                                    <option>Poli Penyakit Dalam</option>
+                                    <option>Poli Anak</option>
+                                    <option>Poli Bedah</option>
+                                    <option>Poli Jantung</option>
+                                </select>
+                                <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Search Input -->
+                        <div class="flex-1 w-full">
                             <input
                                 type="text"
-                                id="booking-date"
-                                value="21/07/2026"
-                                class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm text-gray-400 bg-white font-medium focus:outline-none focus:ring-2 focus:ring-[#1e6b45]/30 focus:border-[#1e6b45] transition-colors pr-10 cursor-pointer"
+                                id="booking-search"
+                                placeholder="Cari nama / no. RM / dokter..."
+                                class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-800 placeholder-gray-400 bg-white font-medium focus:outline-none focus:ring-2 focus:ring-[#1e6b45]/30 focus:border-[#1e6b45] transition-colors"
                             >
-                            <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                            </svg>
                         </div>
+
+                        <!-- Search Button -->
+                        <button class="w-full md:w-auto flex items-center justify-center gap-2 px-5 py-2 bg-[#1e6b45] hover:bg-[#175438] text-white text-sm font-semibold rounded-lg transition-colors shadow-sm cursor-pointer whitespace-nowrap h-[38px]">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                            <span>Cari</span>
+                        </button>
                     </div>
 
-                    <!-- Poli Selection
-                    <div class="w-full md:w-60">
-                        <label for="booking-poli" class="block text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wider">Poli</label>
-                        <div class="relative">
-                            <select
-                                id="booking-poli"
-                                class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-850 bg-white font-medium focus:outline-none focus:ring-2 focus:ring-[#1e6b45]/30 focus:border-[#1e6b45] transition-colors appearance-none pr-10 cursor-pointer"
-                            >
-                                <option>Poli Penyakit Dalam</option>
-                                <option>Poli Anak</option>
-                                <option>Poli Bedah</option>
-                            </select>
-                            <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
-                            </svg>
-                        </div>
-                    </div> -->
-
-                    <!-- Search Input -->
-                    <div class="flex-1">
-                        <label for="booking-search" class="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wider"></label>
-                        <input
-                            type="text"
-                            id="booking-search"
-                            placeholder="Cari nama / no. RM / dokter..."
-                            class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm text-gray-800 placeholder-gray-400 bg-white font-medium focus:outline-none focus:ring-2 focus:ring-[#1e6b45]/30 focus:border-[#1e6b45] transition-colors"
-                        >
+                <!-- Table Section -->
+                <div class="w-full overflow-hidden border-t border-b border-gray-100">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm text-gray-700">
+                            <thead class="bg-gray-50 border-b border-gray-200 text-xs font-bold text-gray-600 uppercase tracking-wider">
+                                <tr>
+                                    <th class="px-6 py-4 w-16">No.</th>
+                                    <th class="px-6 py-4 w-32">No. RM</th>
+                                    <th class="px-6 py-4">Nama Pasien</th>
+                                    <th class="px-6 py-4">Dokter</th>
+                                    <th class="px-6 py-4">Jam Booking</th>
+                                    <th class="px-6 py-4 w-28">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100 font-medium text-gray-800 text-xs">
+                                <tr class="hover:bg-gray-50/50 transition-colors">
+                                    <td class="px-6 py-4 text-gray-400">1</td>
+                                    <td class="px-6 py-4 font-bold text-gray-800">RM001</td>
+                                    <td class="px-6 py-4">Budi Santoso</td>
+                                    <td class="px-6 py-4 text-gray-600">dr. Andi, Sp.PD</td>
+                                    <td class="px-6 py-4 text-gray-600">08.00</td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-block bg-gray-100 text-gray-600 text-[10px] font-bold px-2.5 py-0.5 rounded-full">Booking</span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50/50 transition-colors">
+                                    <td class="px-6 py-4 text-gray-400">2</td>
+                                    <td class="px-6 py-4 font-bold text-gray-800">RM002</td>
+                                    <td class="px-6 py-4">Siti Aisyah</td>
+                                    <td class="px-6 py-4 text-gray-600">dr. Andi, Sp.PD</td>
+                                    <td class="px-6 py-4 text-gray-600">08.30</td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-block bg-gray-100 text-gray-600 text-[10px] font-bold px-2.5 py-0.5 rounded-full">Booking</span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50/50 transition-colors">
+                                    <td class="px-6 py-4 text-gray-400">3</td>
+                                    <td class="px-6 py-4 font-bold text-gray-800">RM003</td>
+                                    <td class="px-6 py-4">Ahmad Fauzi</td>
+                                    <td class="px-6 py-4 text-gray-600">dr. Andi, Sp.PD</td>
+                                    <td class="px-6 py-4 text-gray-600">09.00</td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-block bg-gray-100 text-gray-600 text-[10px] font-bold px-2.5 py-0.5 rounded-full">Booking</span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50/50 transition-colors">
+                                    <td class="px-6 py-4 text-gray-400">4</td>
+                                    <td class="px-6 py-4 font-bold text-gray-800">RM004</td>
+                                    <td class="px-6 py-4">Dewi Lestari</td>
+                                    <td class="px-6 py-4 text-gray-600">dr. Andi, Sp.PD</td>
+                                    <td class="px-6 py-4 text-gray-600">09.30</td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-block bg-gray-100 text-gray-600 text-[10px] font-bold px-2.5 py-0.5 rounded-full">Booking</span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50/50 transition-colors">
+                                    <td class="px-6 py-4 text-gray-400">5</td>
+                                    <td class="px-6 py-4 font-bold text-gray-800">RM005</td>
+                                    <td class="px-6 py-4">Eko Prasetyo</td>
+                                    <td class="px-6 py-4 text-gray-600">dr. Andi, Sp.PD</td>
+                                    <td class="px-6 py-4 text-gray-600">10.00</td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-block bg-gray-100 text-gray-600 text-[10px] font-bold px-2.5 py-0.5 rounded-full">Booking</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-
-                    <!-- Search Button -->
-                    <button class="w-full md:w-auto flex items-center justify-center gap-2 px-6 py-2.5 bg-[#1e6b45] hover:bg-[#175438] text-white text-sm font-semibold rounded-lg transition-colors shadow-sm cursor-pointer whitespace-nowrap">
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                        </svg>
-                        Cari
-                    </button>
-                </div>
-
-                <!-- Table Card -->
-                <div class="w-full bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-                    <table class="w-full text-left text-sm text-gray-700">
-                        <thead class="bg-gray-50 border-b border-gray-200 text-xs font-bold text-gray-600 uppercase tracking-wider">
-                            <tr>
-                                <th class="px-6 py-4 w-16">No.</th>
-                                <th class="px-6 py-4 w-32">No. RM</th>
-                                <th class="px-6 py-4">Nama Pasien</th>
-                                <th class="px-6 py-4">Dokter</th>
-                                <th class="px-6 py-4">Jam Booking</th>
-                                <th class="px-6 py-4 w-28">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-100 font-medium text-gray-800 text-xs">
-                            <tr class="hover:bg-gray-50/50 transition-colors">
-                                <td class="px-6 py-4 text-gray-400">1</td>
-                                <td class="px-6 py-4 font-bold text-gray-800">RM001</td>
-                                <td class="px-6 py-4">Budi Santoso</td>
-                                <td class="px-6 py-4 text-gray-600">dr. Andi, Sp.PD</td>
-                                <td class="px-6 py-4 text-gray-600">08.00</td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-block bg-gray-100 text-gray-600 text-[10px] font-bold px-2.5 py-0.5 rounded-full">Booking</span>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-gray-50/50 transition-colors">
-                                <td class="px-6 py-4 text-gray-400">2</td>
-                                <td class="px-6 py-4 font-bold text-gray-800">RM002</td>
-                                <td class="px-6 py-4">Siti Aisyah</td>
-                                <td class="px-6 py-4 text-gray-600">dr. Andi, Sp.PD</td>
-                                <td class="px-6 py-4 text-gray-600">08.30</td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-block bg-gray-100 text-gray-600 text-[10px] font-bold px-2.5 py-0.5 rounded-full">Booking</span>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-gray-50/50 transition-colors">
-                                <td class="px-6 py-4 text-gray-400">3</td>
-                                <td class="px-6 py-4 font-bold text-gray-800">RM003</td>
-                                <td class="px-6 py-4">Ahmad Fauzi</td>
-                                <td class="px-6 py-4 text-gray-600">dr. Andi, Sp.PD</td>
-                                <td class="px-6 py-4 text-gray-600">09.00</td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-block bg-gray-100 text-gray-600 text-[10px] font-bold px-2.5 py-0.5 rounded-full">Booking</span>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-gray-50/50 transition-colors">
-                                <td class="px-6 py-4 text-gray-400">4</td>
-                                <td class="px-6 py-4 font-bold text-gray-800">RM004</td>
-                                <td class="px-6 py-4">Dewi Lestari</td>
-                                <td class="px-6 py-4 text-gray-600">dr. Andi, Sp.PD</td>
-                                <td class="px-6 py-4 text-gray-600">09.30</td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-block bg-gray-100 text-gray-600 text-[10px] font-bold px-2.5 py-0.5 rounded-full">Booking</span>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-gray-50/50 transition-colors">
-                                <td class="px-6 py-4 text-gray-400">5</td>
-                                <td class="px-6 py-4 font-bold text-gray-800">RM005</td>
-                                <td class="px-6 py-4">Eko Prasetyo</td>
-                                <td class="px-6 py-4 text-gray-600">dr. Andi, Sp.PD</td>
-                                <td class="px-6 py-4 text-gray-600">10.00</td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-block bg-gray-100 text-gray-600 text-[10px] font-bold px-2.5 py-0.5 rounded-full">Booking</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
 
                 <!-- Table Footer / Pagination -->
-                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 font-medium text-xs text-gray-500">
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 font-medium text-xs text-gray-500 pt-1">
                     <p>Menampilkan 1 - 5 dari 120 data</p>
 
                     <div class="flex items-center gap-1 bg-white border border-gray-200 rounded-lg p-1 shadow-sm select-none">
@@ -325,7 +319,7 @@
 
         <!-- Footer -->
         <footer class="bg-white border-t border-gray-100 py-3 text-center shrink-0">
-            <p class="text-xs text-gray-400">&copy; {{ date('Y') }} RSUD Kajen. Semua hak dilindungi.</p>
+            <p class="text-xs text-gray-400">&copy; {{ date('Y') }} RSUD Kajen. Melayani Dengan Hati.</p>
         </footer>
     </div>
 

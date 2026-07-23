@@ -72,7 +72,7 @@
                 </li>
                 <!-- Riwayat Notifikasi -->
                 <li>
-                    <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/80 hover:bg-white/10 text-sm font-medium transition-colors">
+                    <a href="{{ route('riwayat-notifikasi') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/80 hover:bg-white/10 text-sm font-medium transition-colors">
                         <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
                         </svg>
@@ -81,7 +81,7 @@
                 </li>
                 <!-- Laporan -->
                 <li>
-                    <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/80 hover:bg-white/10 text-sm font-medium transition-colors">
+                    <a href="{{ route('laporan') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/80 hover:bg-white/10 text-sm font-medium transition-colors">
                         <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                         </svg>
@@ -149,14 +149,6 @@
                     </svg>
                     <span class="absolute top-0 right-0 bg-red-500 text-white text-[9px] font-bold w-4 h-4 flex items-center justify-center rounded-full">2</span>
                 </button>
-
-                <!-- User Menu -->
-                <button class="flex items-center gap-2 hover:bg-gray-50 px-2 py-1 rounded-lg transition-colors">
-                    <div class="w-8 h-8 bg-[#1e6b45] text-white rounded-full flex items-center justify-center font-semibold text-sm">
-                        {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
-                    </div>
-                    <span class="text-sm font-semibold text-gray-800 hidden sm:inline">{{ Auth::user()->name }}</span>
-                </button>
             </div>
         </header>
 
@@ -193,7 +185,7 @@
             </div>
 
             <!-- ===== FORM AREA ===== -->
-            <div class="p-6 max-w-5xl mx-auto w-full">
+            <div class="p-6 w-full">
 
                 <!-- STEP 1 CONTAINER -->
                 <div id="step1-container" class="block bg-white rounded-xl border border-gray-100 shadow-sm transition-all">
@@ -248,9 +240,7 @@
                                         value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}"
                                         class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-[#1e6b45]/30 focus:border-[#1e6b45] transition-colors pr-10 cursor-pointer font-medium"
                                     >
-                                    <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                                    </svg>
+
                                 </div>
                             </div>
 
@@ -269,9 +259,6 @@
                                             value="09:00"
                                             class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-[#1e6b45]/30 focus:border-[#1e6b45] transition-colors pr-8 font-medium"
                                         >
-                                        <svg class="absolute right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                        </svg>
                                     </div>
                                     <span class="text-sm text-gray-500 font-medium shrink-0">s.d.</span>
                                     <!-- Jam Selesai -->
@@ -283,9 +270,6 @@
                                             value="12:00"
                                             class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-[#1e6b45]/30 focus:border-[#1e6b45] transition-colors pr-8 font-medium"
                                         >
-                                        <svg class="absolute right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                        </svg>
                                     </div>
                                 </div>
                             </div>
@@ -667,7 +651,7 @@
 
         <!-- Footer -->
         <footer class="bg-white border-t border-gray-100 py-3 text-center shrink-0">
-            <p class="text-xs text-gray-400">&copy; {{ date('Y') }} RSUD Kajen. Semua hak dilindungi.</p>
+            <p class="text-xs text-gray-400">&copy; {{ date('Y') }} RSUD Kajen. Melayani Dengan Hati.</p>
         </footer>
     </div>
 
