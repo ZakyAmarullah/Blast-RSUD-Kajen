@@ -134,14 +134,106 @@
             <div class="ml-auto flex items-center gap-3">
 
                 <!-- Poli Badge -->
-                <div class="flex items-center gap-2 px-3 py-1.5 border border-[#1e6b45]/30 rounded-lg bg-[#1e6b45]/5 text-[#1e6b45] text-sm font-medium cursor-pointer hover:bg-[#1e6b45]/10 transition-colors">
-                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                    </svg>
-                    Poli Penyakit Dalam
-                    <svg class="w-3.5 h-3.5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
-                    </svg>
+                <div class="relative inline-block text-left">
+
+                    <!-- Button Dropdown -->
+                    <button id="dropdownButton" onclick="toggleDropdown()"
+                        class="flex items-center gap-2 px-3 py-2 border border-[#1e6b45]/30 rounded-lg bg-[#1e6b45]/5 text-[#1e6b45] text-sm font-medium hover:bg-[#1e6b45]/10 transition-colors cursor-pointer">
+
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+
+                        <span id="selectedPoli">Poli Penyakit Dalam</span>
+
+                        <svg class="w-4 h-4 transition-transform duration-200" id="arrowIcon" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+
+                    <!-- Dropdown -->
+                    <div id="dropdownMenu"
+                        class="hidden absolute right-0 mt-2 w-60 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden z-50">
+
+                        <button onclick="selectPoli('Semua Poli')"
+                            class="w-full text-left px-4 py-3 hover:bg-green-50 text-sm">
+                            Semua Poli
+                        </button>
+
+                        <button onclick="selectPoli('Poli Penyakit Dalam')"
+                            class="w-full text-left px-4 py-3 hover:bg-green-50 text-sm">
+                            Poli Penyakit Dalam
+                        </button>
+
+                        <button onclick="selectPoli('Poli Anak')"
+                            class="w-full text-left px-4 py-3 hover:bg-green-50 text-sm">
+                            Poli Anak
+                        </button>
+
+                        <button onclick="selectPoli('Poli Bedah')"
+                            class="w-full text-left px-4 py-3 hover:bg-green-50 text-sm">
+                            Poli Bedah
+                        </button>
+
+                        <button onclick="selectPoli('Poli Kandungan')"
+                            class="w-full text-left px-4 py-3 hover:bg-green-50 text-sm">
+                            Poli Kandungan
+                        </button>
+
+                        <button onclick="selectPoli('Poli Mata')"
+                            class="w-full text-left px-4 py-3 hover:bg-green-50 text-sm">
+                            Poli Mata
+                        </button>
+
+                        <button onclick="selectPoli('Poli Gigi')"
+                            class="w-full text-left px-4 py-3 hover:bg-green-50 text-sm">
+                            Poli Gigi
+                        </button>
+
+                        <button onclick="selectPoli('Poli THT - KL')"
+                            class="w-full text-left px-4 py-3 hover:bg-green-50 text-sm">
+                            Poli THT - KL
+                        </button>
+
+                        <button onclick="selectPoli('Poli Jantung dan Pembuluh Darah')"
+                            class="w-full text-left px-4 py-3 hover:bg-green-50 text-sm">
+                            Poli Jantung dan Pembuluh Darah
+                        </button>
+
+                        <button onclick="selectPoli('Poli Orthopedi')"
+                            class="w-full text-left px-4 py-3 hover:bg-green-50 text-sm">
+                            Poli Orthopedi
+                        </button>
+
+                        <button onclick="selectPoli('Poli Saraf')"
+                            class="w-full text-left px-4 py-3 hover:bg-green-50 text-sm">
+                            Poli Saraf
+                        </button>
+
+                        <button onclick="selectPoli('Poli Rehab Medik')"
+                            class="w-full text-left px-4 py-3 hover:bg-green-50 text-sm">
+                            Poli Rehab Medik
+                        </button>
+
+                        <button onclick="selectPoli('Poli Kesehatan Jiwa')"
+                            class="w-full text-left px-4 py-3 hover:bg-green-50 text-sm">
+                            Poli Kesehatan Jiwa
+                        </button>
+
+                        <button onclick="selectPoli('Poli Kulit dan Kelamin')"
+                            class="w-full text-left px-4 py-3 hover:bg-green-50 text-sm">
+                            Poli Kulit dan Kelamin
+                        </button>
+
+                        <button onclick="selectPoli('Poli Paru')"
+                            class="w-full text-left px-4 py-3 hover:bg-green-50 text-sm">
+                            Poli Paru
+                        </button>
+                    </div>
+
                 </div>
 
                 <!-- Date -->
@@ -328,6 +420,32 @@
             <p class="text-xs text-gray-400">&copy; {{ date('Y') }} RSUD Kajen. Melayani Dengan Hati.</p>
         </footer>
     </div>
+    <script>
+        function toggleDropdown() {
+            document.getElementById('dropdownMenu').classList.toggle('hidden');
+            document.getElementById('arrowIcon').classList.toggle('rotate-180');
+        }
 
+        function selectPoli(namaPoli) {
+
+            document.getElementById('selectedPoli').innerText = namaPoli;
+
+            document.getElementById('dropdownMenu').classList.add('hidden');
+            document.getElementById('arrowIcon').classList.remove('rotate-180');
+
+            // nanti disini bisa memanggil ajax / reload data
+            console.log("Poli dipilih :", namaPoli);
+        }
+
+        // Menutup dropdown saat klik di luar
+        window.addEventListener('click', function(e) {
+
+            if (!document.getElementById('dropdownButton').contains(e.target)) {
+                document.getElementById('dropdownMenu').classList.add('hidden');
+                document.getElementById('arrowIcon').classList.remove('rotate-180');
+            }
+
+        });
+    </script>
 </body>
 </html>
