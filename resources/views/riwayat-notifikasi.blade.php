@@ -99,7 +99,7 @@
                 </li>
                 <!-- Pengaturan -->
                 <li>
-                    <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/80 hover:bg-white/10 text-sm font-medium transition-colors">
+                    <a href="{{ route('pengaturan') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white/80 hover:bg-white/10 text-sm font-medium transition-colors">
                         <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -128,14 +128,13 @@
 
         <!-- Top Navbar -->
         <header class="bg-white border-b border-gray-200 px-6 py-3.5 flex items-center gap-3 shrink-0">
-
-            <!-- Page Title on Navbar Left -->
+            
             <h1 class="text-base font-bold text-gray-800">Riwayat Notifikasi</h1>
 
-            <!-- Controls Group on Navbar Right -->
-            <div class="ml-auto flex items-center gap-3 flex-wrap">
+            <div class="ml-auto flex items-center gap-3">
 
-               <div class="flex items-center gap-2 px-3 py-1.5 border border-[#1e6b45]/30 rounded-lg bg-[#1e6b45]/5 text-[#1e6b45] text-sm font-medium cursor-pointer hover:bg-[#1e6b45]/10 transition-colors">
+                <!-- Poli Badge -->
+                <div class="flex items-center gap-2 px-3 py-1.5 border border-[#1e6b45]/30 rounded-lg bg-[#1e6b45]/5 text-[#1e6b45] text-sm font-medium cursor-pointer hover:bg-[#1e6b45]/10 transition-colors">
                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                     </svg>
@@ -145,35 +144,12 @@
                     </svg>
                 </div>
 
-                <!-- Date Range Filters -->
-                <div class="flex items-center gap-4">
-                    <!-- Start Date -->
-                    <div class="relative">
-                        <input
-                            type="date"
-                            id="tanggal"
-                            name="tanggal"
-                            value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}"
-                            class="w-28 border border-gray-300 rounded-lg px-3 py-1.5 text-xs text-gray-700 bg-white font-medium focus:outline-none focus:ring-2 focus:ring-[#1e6b45]/30 focus:border-[#1e6b45] transition-colors pr-8 cursor-pointer"
-                        >
-                       
-                    </div>
-
-                    <span class="text-xs text-gray-500 font-medium">s.d.</span>
-
-                    <!-- End Date -->
-                    <div class="relative">
-                        <input
-                            type="date"
-                            value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}"
-                            class="w-28 border border-gray-300 rounded-lg px-3 py-1.5 text-xs text-gray-700 bg-white font-medium focus:outline-none focus:ring-2 focus:ring-[#1e6b45]/30 focus:border-[#1e6b45] transition-colors pr-8 cursor-pointer"
-                        >
-                    </div>
-
-                    <!-- Filter Button -->
-                    <button class="px-4 py-1.5 bg-[#1e6b45] hover:bg-[#175438] text-white text-xs font-semibold rounded-lg transition-colors shadow-sm cursor-pointer ml-1">
-                        Filter
-                    </button>
+                <!-- Date -->
+                <div class="flex items-center gap-1.5 text-gray-600 text-sm border border-gray-200 rounded-lg px-3 py-1.5 bg-white">
+                    <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                    <span id="current-navbar-date">{{ \Carbon\Carbon::now()->locale('id')->isoFormat('dddd, D MMMM YYYY') }}</span>
                 </div>
             </div>
         </header>
@@ -183,6 +159,38 @@
 
             <!-- Main Content Card -->
             <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 space-y-6">
+
+                <div class="flex justify-end">
+                    <div class="flex items-center gap-4">
+
+                        <!-- Start Date -->
+                        <div class="relative">
+                            <input
+                                type="date"
+                                value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}"
+                                class="w-36 border border-gray-300 rounded-lg px-3 py-2 text-sm"
+                            >
+                        </div>
+
+                        <span class="text-sm text-gray-500 font-medium">s.d.</span>
+
+                        <!-- End Date -->
+                        <div class="relative">
+                            <input
+                                type="date"
+                                value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}"
+                                class="w-36 border border-gray-300 rounded-lg px-3 py-2 text-sm"
+                            >
+                        </div>
+
+                        <!-- Button -->
+                        <button
+                            class="px-5 py-2 bg-[#1e6b45] hover:bg-[#175438] text-white rounded-lg font-medium">
+                            Filter
+                        </button>
+
+                    </div>
+                </div>
 
                 <!-- Table Section -->
                 <div class="w-full overflow-hidden">

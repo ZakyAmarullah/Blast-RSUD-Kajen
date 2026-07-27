@@ -33,6 +33,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/laporan', function () {
         return view('laporan');
     })->name('laporan');
+    Route::get('/pengaturan', function () {
+        return view('pengaturan');
+    })->name('pengaturan');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
